@@ -1,0 +1,99 @@
+{% extends "base.html" %} 
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+    <a class="navbar-brand text-logo" href="#"> GATEKEEPER </a>
+    <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+    >
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">
+                    Home <span class="sr-only">(current)</span></a
+                >
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'register_pass' %}">
+                    Register
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'validate' %}"> Validate </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'addevent' %}"> Dates </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'addstudents' %}">
+                    Students
+                </a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <button class="btn btn-danger my-2 my-sm-0" type="submit">
+                logout
+            </button>
+        </form>
+    </div>
+</nav>
+{% endblock navbar %} 
+
+{% block content %}
+<div class="add-students-form w-50 mx-auto">
+    <div class="mx-auto m-3">
+        <center><p class="header">Add Event</p></center>
+    </div>
+    <form action="#" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Name of event: </label>
+            <input
+                type="text"
+                name="name"
+                id="name"
+                class="form-control"
+                required
+            >
+        </div>
+        <div class="form-group">
+            <label for="date">Date of event: </label>
+            <input
+                type="date"
+                name="date"
+                id="date"
+                class="form-control"
+                required
+            >
+        </div>
+        <center>
+            <button type="submit" class="btn btn-success">
+                Add Event
+            </button>
+        </center>
+    </form>
+    {% if message %}
+    <br>
+    <center>
+        {% if status == "OK" %}
+        <div class="alert alert-success" role="alert">
+            {{message}}
+        </div>
+        {% elif status == "NO" %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+        {% endif %}
+    </center>
+    {% endif %}
+</div>
+{% endblock content %}

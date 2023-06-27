@@ -1,0 +1,36 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/bootstrap-select-1.13.9/dist/css/bootstrap-select.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/bootstrap.min.css' %}">
+    <link rel='stylesheet' href='{% static 'assets/style.css' %}'>
+    <script src="{% static 'assets/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/popper.min.js' %}"></script>
+    <script src="{% static 'assets/bootstrap-select-1.13.9/dist/js/bootstrap-select.js' %}"></script>
+    <script src="{% static 'assets/bootstrap.min.js' %}" ></script>
+    <script src='{% static 'assets/app.js' %}'></script>
+    <title> GateKeeper {% block title %} {% endblock %}</title>
+  </head>
+
+  <body>
+    {% block navbar %}
+    {% endblock navbar %}
+
+  <div class='container'>
+
+    {% block content %}
+    {% endblock %}
+
+  </div>
+  </body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  {% block script %}
+  {% endblock %}
+</html>
